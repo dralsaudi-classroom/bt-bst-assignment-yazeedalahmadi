@@ -15,7 +15,7 @@ public class TreeUser {
 	c+=count(tree);
 	tree.find(Relative.Parent);
 	}
-	return count;
+	return c;
 	}
     public static <T> int countLeaves(BT<T> bt) {
 	bt.find(Relative.Root);
