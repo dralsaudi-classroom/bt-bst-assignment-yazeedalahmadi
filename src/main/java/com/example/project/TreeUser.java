@@ -2,17 +2,17 @@ package com.example.project;
 
 public class TreeUser {
 	public static<T> int count(BT<T> tree){
-	int count=0;
+	int c=0;
 	if(tree.empty())
 		return 0;
 	if(tree.isLeaf())
 		return 1;
 	if(tree.find(Relative.LeftChild)){
-	count+=count(tree);
+	c+=count(tree);
 	tree.find(Relative.Parent);
 	}
 	if(tree.find(Relative.LeftChild)){
-	count+=count(tree);
+	c+=count(tree);
 	tree.find(Relative.Parent);
 	}
 	return count;
