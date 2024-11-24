@@ -1,8 +1,10 @@
 package com.example.project;
 
 public class BST<T> {
+	public int counter;
+	public int countk;
+
     BSTNode<T> root, current;
-	
 	/** Creates a new instance of BST */
 	public BST() {
 		root = current = null;
@@ -93,6 +95,7 @@ public class BST<T> {
 	}
     public boolean insert(int k, T val) {
 		BSTNode<T> p, q = current;
+		counter++;
 		if(findkey(k)) {
 			current = q;  // findkey() modified current
 			return false; // key already in the BST
@@ -154,8 +157,42 @@ public class BST<T> {
 		return p;
 	}
 	public int countNodesIn(int k) {
-		throw new UnsupportedOperationException("Not supported yet.");
+		 BSTNode<T> node = findk(root, k);
+		    if (node == null) return 0; // If node k is not found, return 0
+
+		    int count = 0;
+		    LinkedStack<BSTNode<T>> s1 = new LinkedStack<>();
+		    s1.push(node);
+
+		    while (!s1.empty()) {
+		        BSTNode<T> current = s1.pop();
+		        count++;
+
+		        if (current.left != null) {
+		        	s1.push(current.left);
+		        }
+		        if (current.right != null) {
+		        	s1.push(current.right);
+		        }
+		    }
+		    return count;
+		}
 		// Write the member method countNodesIn member of the class BST that returns the number of nodes in the subtree rooted at
 		// the node with key k. Assume that k exists. You are not allowed to call any of the BST methods.
+	
+	public BSTNode<T> findk(BSTNode<T> root, int k) {
+		BSTNode<T> temp =root;
+	    while (temp != null) {
+	    	countk++;
+	        if (temp.key == k) 
+	        	return temp;
+	        if (k < temp.key) 
+	        	temp = temp.left;
+	        else 
+	        	temp = temp.right;
+	    }
+	    return null;
 	}
+
+
 }
