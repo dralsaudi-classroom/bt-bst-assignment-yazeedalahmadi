@@ -11,7 +11,7 @@ public class TreeUser {
 	c+=count(tree);
 	tree.find(Relative.Parent);
 	}
-	if(tree.find(Relative.LeftChild)){
+	if(tree.find(Relative.RightChild)){
 	c+=count(tree);
 	tree.find(Relative.Parent);
 	}
